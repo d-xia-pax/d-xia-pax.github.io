@@ -16,13 +16,13 @@ function StartPayments() {
     if (comm == "T00"){
         // for test purpose. need to delete later
         // ---start---
-        
-        additionalinfo = "REPORTSTATUS=1" + us + "TIPREQ=1" + us + "GETSIGN=1" + us + "SIGN=1";
+
+        additionalinfo = "TIPREQ=1" + us + "GETSIGN=1" + us + "SIGN=1";
         version = "1.44";
         transType = "01";
         amtinfo = "1299" + us + us + us + us + us;
         traceinfo = "15155029" + us + us + us + us + us + us;
-        
+
         // --- end ---
         result = stx + comm + fs + version + fs + transType + fs + amtinfo + fs
             + accountinfo + fs + traceinfo + fs + avsinfo + fs + cashierinfo + fs
@@ -35,14 +35,14 @@ function StartPayments() {
     else
         result = stx + comm + fs + version + fs + transType + fs + amtinfo + fs
             + accountinfo + fs + traceinfo + fs + cashierinfo + fs + additionalinfo + etx;
-    
-    
+
+
     console.log(getlrc(result).charCodeAt(0));
     str = toBase64(result + getlrc(result));
-    
+
     st = result + getlrc(result);
     console.log(st);
-    
+
     return str;
 }
 
